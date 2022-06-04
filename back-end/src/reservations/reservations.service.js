@@ -8,7 +8,11 @@ const knex = require("../db/connection");
 //     .orderBy("reservation_time");
 // }
 
-function listAll(reservation_date) {
+function listAll() {
+  return knex("reservations").select("*").orderBy("reservation_time", "asc");
+}
+
+function searchByReservationDate(reservation_date) {
   return knex("reservations")
     .select("*")
     .where({ reservation_date })
@@ -49,7 +53,7 @@ function update(reservation) {
 
 module.exports = {
   listAll,
-  // listByDate,
+  searchByReservationDate,
   searchByPhone,
   read,
   create,

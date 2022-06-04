@@ -43,7 +43,7 @@ function EditReservation() {
     <main>
       <h1 className="mt-lg-4 mt-1 mb-3">Edit Reservation {reservation_id}</h1>
       <ErrorAlert error={error} />
-      <form onSubmit={submitHandler} class="row g-3">
+      <form onSubmit={submitHandler} className="row g-3">
         <ReservationForm
           reservation={reservation}
           setReservation={setReservation}

@@ -76,12 +76,10 @@ async function reservationExist(req, res, next) {
   next({ status: 404, message: reservation_id });
 }
 
-async function list(req, res) {
+async function getReservationsByFilterOptions(req, res) {
   const { date, mobile_number } = req.query;
-  console.log("the date is: " + date, "the mobile number is: " + mobile_number);
   if (date) {
-    const data = await service.listAll(date);
-    console.log(data);
+    const data = await service.searchByReservationDate(date);
     res.json({ data });
   } else {
     const data = await service.searchByPhone(mobile_number);
@@ -114,7 +112,7 @@ async function updateStatus(req, res) {
 }
 
 module.exports = {
-  list: asyncErrorBoundary(list),
+  getReservations: asyncErrorBoundary(getReservationsByFilterOptions),
   create: [
     hasOnlyValidReservationProperties,
     hasRequiredProperties,
