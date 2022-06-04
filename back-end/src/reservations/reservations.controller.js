@@ -76,15 +76,22 @@ async function reservationExist(req, res, next) {
   next({ status: 404, message: reservation_id });
 }
 
-async function getReservationsByFilterOptions(req, res) {
-  const { date, mobile_number } = req.query;
+async function checkQueryParams(req, res, next) {
+  const { date = "", mobile_number = "" } = req.query;
   if (date) {
-    const data = await service.searchByReservationDate(date);
-    res.json({ data });
-  } else {
-    const data = await service.searchByPhone(mobile_number);
-    res.json({ data });
+    res.locals.reservations = await service.searchByReservationDate(date);
+  } else if (mobile_number) {
+    res.locals.reservations = await service.searchByPhone(mobile_number);
   }
+  next();
+}
+
+async function getReservationsByFilterOptions(req, res) {
+  const reservations = res.locals.reservations || (await service.listAll());
+  const reservationsNotFinished = reservations.filter(
+    (reservation) => reservation.status !== "finished"
+  );
+  res.status(200).json({ data: reservationsNotFinished });
 }
 
 async function create(req, res) {
@@ -112,7 +119,10 @@ async function updateStatus(req, res) {
 }
 
 module.exports = {
-  getReservations: asyncErrorBoundary(getReservationsByFilterOptions),
+  getReservations: [
+    asyncErrorBoundary(checkQueryParams),
+    getReservationsByFilterOptions,
+  ],
   create: [
     hasOnlyValidReservationProperties,
     hasRequiredProperties,

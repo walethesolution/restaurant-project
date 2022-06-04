@@ -12,14 +12,18 @@ function listAll() {
   return knex("reservations").select("*").orderBy("reservation_time", "asc");
 }
 
+// function searchByReservationDate(reservation_date) {
+//   return knex("reservations")
+//     .select("*")
+//     .where({ reservation_date })
+//     .whereRaw(
+//       "(status is null or ( status <> 'finished' and status <> 'cancelled')) "
+//     )
+//     .orderBy("reservation_time", "asc");
+// }
+
 function searchByReservationDate(reservation_date) {
-  return knex("reservations")
-    .select("*")
-    .where({ reservation_date })
-    .whereRaw(
-      "(status is null or ( status <> 'finished' and status <> 'cancelled')) "
-    )
-    .orderBy("reservation_time", "asc");
+  return knex("reservations").select("*").where({ reservation_date });
 }
 
 function searchByPhone(mobile_number) {
@@ -27,7 +31,7 @@ function searchByPhone(mobile_number) {
   return knex("reservations")
     .whereRaw(
       "translate(mobile_number, '() -', '') like ?",
-      `%${mobile_number.replace(/D/g, "")}%`
+      `%${mobile_number.replace(/\D/g, "")}%`
     )
     .orderBy("reservation_date");
 }
