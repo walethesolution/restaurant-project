@@ -59,11 +59,14 @@ function DashboardTablesList({ loadReservations }) {
       window.confirm(
         "Is this table ready to seat new guests? This cannot be undone."
       )
-    ) {
-      await deleteTable(tableId);
-      loadTables();
-      loadReservations();
-    }
+    )
+      try {
+        await deleteTable(tableId);
+        loadTables();
+        loadReservations();
+      } catch (e) {
+        console.error(e);
+      }
   }
 
   return (

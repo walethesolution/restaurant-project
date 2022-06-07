@@ -1,4 +1,5 @@
 import React from "react";
+// import { v4 as uuid } from "uuid";
 
 /**
  * Defines the alert message to render if the specified error is truthy.
@@ -8,10 +9,20 @@ import React from "react";
  *  a bootstrap danger alert that contains the message string.
  */
 
+/*
+*
+
+key={ generateKey(index) }
+*/
+const generateKey = (pre) => {
+  return `${pre}_${new Date().getTime()}`;
+};
+
 function ErrorAlert({ error }) {
+  // let unique_id = uuid();
   if (error && Array.isArray(error.message)) {
     const errorMessagesList = error.message.map((message, index) => {
-      return <li key={index}>{message}</li>;
+      return <li key={generateKey(index)}>{message}</li>;
     });
     return (
       <div className="alert alert-danger m-1 mb-2" role="alert">
