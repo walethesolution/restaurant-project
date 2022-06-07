@@ -42,6 +42,7 @@ function validateReservationTime(req, res, next) {
   // Get opening and last call hours based on the day
   const opening = OPENING_HOURS[day].open;
   const lastCall = OPENING_HOURS[day].lastCall;
+
   // Check if rservation is during opening hours and before last call
   if (!(reservation_time > opening && reservation_time < lastCall)) {
     return next({
@@ -49,6 +50,7 @@ function validateReservationTime(req, res, next) {
       message: "not open",
     });
   }
+
   // Check if reservation is today and if so if its later than current time
   if (reservation_date === today() && reservation_time < time()) {
     return next({
@@ -72,6 +74,7 @@ function validateStatus(req, res, next) {
 }
 
 const VALID_STATUS_PROPERTIES = ["booked", "seated", "finished", "cancelled"];
+
 // Validate update status
 function validateStatusUpdate(req, res, next) {
   const { status = null } = req.body.data;

@@ -84,7 +84,6 @@ function tableIsOccupied(req, res, next) {
 
 async function list(req, res) {
   const tables = await service.list();
-  // Sort tables in one line
   const sortedTables = tables.sort((a, b) =>
     a.table_name > b.table_name ? 1 : b.table_name > a.table_name ? -1 : 0
   );

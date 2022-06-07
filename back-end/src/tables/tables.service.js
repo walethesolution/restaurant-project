@@ -15,12 +15,10 @@ function read(table_id) {
   return knex("tables").select("*").where({ table_id }).first();
 }
 
-// Checking reservations table
 function readReservationID(reservation_id) {
   return knex("reservations").select("*").where({ reservation_id }).first();
 }
 
-// update reservation status when seating table
 function updateReservation(updatedReservation) {
   return knex("reservations")
     .select("*")

@@ -71,9 +71,7 @@ function DashboardTablesList({ loadReservations }) {
       <ErrorAlert error={tablesError} />
       <div className="mt-4">
         <h4>Tables</h4>
-        <ul className="list-group list-group-horizontal-sm">
-          {tablesListItem}
-        </ul>
+        <ul className="list-group list-group-vertical-sm">{tablesListItem}</ul>
       </div>
     </>
   );

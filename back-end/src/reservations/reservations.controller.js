@@ -91,7 +91,13 @@ async function getReservationsByFilterOptions(req, res) {
   const reservationsNotFinished = reservations.filter(
     (reservation) => reservation.status !== "finished"
   );
-  res.status(200).json({ data: reservationsNotFinished });
+  const sortedReservations = reservationsNotFinished.sort(
+    (firstElem, secElem) => {
+      return firstElem.reservation_time.localeCompare(secElem.reservation_time);
+    }
+  );
+
+  res.status(200).json({ data: sortedReservations });
 }
 
 async function create(req, res) {
@@ -121,7 +127,7 @@ async function updateStatus(req, res) {
 module.exports = {
   getReservations: [
     asyncErrorBoundary(checkQueryParams),
-    getReservationsByFilterOptions,
+    asyncErrorBoundary(getReservationsByFilterOptions),
   ],
   create: [
     hasOnlyValidReservationProperties,

@@ -1,33 +1,14 @@
 const knex = require("../db/connection");
 
-// function listAll(reservation_date) {
-//   return knex("reservations")
-//     .select("*")
-//     .where({ reservation_date: reservation_date })
-//     .whereNot({ status: "finished" })
-//     .orderBy("reservation_time");
-// }
-
 function listAll() {
   return knex("reservations").select("*").orderBy("reservation_time", "asc");
 }
-
-// function searchByReservationDate(reservation_date) {
-//   return knex("reservations")
-//     .select("*")
-//     .where({ reservation_date })
-//     .whereRaw(
-//       "(status is null or ( status <> 'finished' and status <> 'cancelled')) "
-//     )
-//     .orderBy("reservation_time", "asc");
-// }
 
 function searchByReservationDate(reservation_date) {
   return knex("reservations").select("*").where({ reservation_date });
 }
 
 function searchByPhone(mobile_number) {
-  console.log("mobile number: " + mobile_number);
   return knex("reservations")
     .whereRaw(
       "translate(mobile_number, '() -', '') like ?",
