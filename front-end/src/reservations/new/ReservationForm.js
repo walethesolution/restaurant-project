@@ -17,7 +17,7 @@ function ReservationForm({ reservation, setReservation }) {
 
   return (
     <>
-      <div className="col-md-6 col-lg-6">
+      <div className="col-md-6 col-xl-4 mb-3 pl-1">
         <label htmlFor="first_name" className="form-label">
           First Name:
         </label>
@@ -31,7 +31,7 @@ function ReservationForm({ reservation, setReservation }) {
           value={reservation.first_name}
         />
       </div>
-      <div className="col-md-6 col-lg-6">
+      <div className="col-md-6 col-xl-4 mb-3 pl-1">
         <label htmlFor="last_name" className="form-label">
           Last Name:
         </label>
@@ -45,7 +45,7 @@ function ReservationForm({ reservation, setReservation }) {
           value={reservation.last_name}
         />
       </div>
-      <div className="col-md-6 col-lg-4">
+      <div className="col-md-6 col-xl-4 mb-3 pl-1">
         <label htmlFor="mobile_number" className="form-label">
           Mobile Number:
         </label>
@@ -62,7 +62,7 @@ function ReservationForm({ reservation, setReservation }) {
           Format: XXX-XXX-XXXX or XXX-XXXX
         </div>
       </div>
-      <div className="col-md-6 col-lg-4">
+      <div className="col-md-6 col-xl-4 mb-3 pl-1">
         <label htmlFor="people" className="form-label">
           Number of People in Party:
         </label>
@@ -80,7 +80,7 @@ function ReservationForm({ reservation, setReservation }) {
           Party size must range from 1-6
         </div>
       </div>
-      <div className="col-md-4 col-lg-4">
+      <div className="col-md-6 col-xl-4 mb-3 pl-1">
         <label htmlFor="reservation_date" className="form-label">
           Date of Reservation:
         </label>
@@ -95,7 +95,7 @@ function ReservationForm({ reservation, setReservation }) {
           value={reservation.reservation_date}
         />
       </div>
-      <div className="col-md-4 col-lg-3 pr-3">
+      <div className="col-md-6 col-xl-4 mb-3 pl-1">
         <label htmlFor="reservation_time" className="form-label">
           Time of Reservation:
         </label>
