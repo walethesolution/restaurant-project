@@ -1,6 +1,6 @@
-# Periodic Tables | Restaurant Reservation System
+# YKY restaurant | Restaurant Reservation System
 
-Periodic Tables is a restaurant reservation system. 
+YKY is a restaurant reservation system. 
 This application is used by restaurant employees to track tables and reservations of customers.
 
 ## Live Deployment
