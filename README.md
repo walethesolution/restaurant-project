@@ -4,7 +4,7 @@ YKY is a restaurant reservation system.
 This application is used by restaurant employees to track tables and reservations of customers.
 
 ## Live Deployment
-- View [Periodic Tables App](https://restaurant-v1-frontend.herokuapp.com/)
+- View [Periodic Tables App](https://restaurant-v1-frontend.herokuapp.com/dashboard/)
 - View [Periodic Tables server](https://restaurant-v1-backend.herokuapp.com/)
 
 ### API
