@@ -22,7 +22,7 @@ This application is used by restaurant employees to track tables and reservation
 | `DELETE` | `tables/:tables_id/seat`| Removes a reservation from a table and changes the reservation's `status` to finished.|
 
 ### Description
-This applicatiion creates a new reservation with the guest's name, number, party size, date, and time.
+This application creates a new reservation with the guest's name, number, party size, date, and time.
 
 Reservations can only be made during business hours. Periodic Tables limits the creation of new reservations to future dates and during business hours (currently, between 10:30 am and 9:30 pm every day except Tuesdays).
 
